@@ -1,5 +1,10 @@
 import { add } from './utils/add.js'
-import './components/createDom.js'
+import '@/components/createDom.js'
+
+import { createApp } from 'vue'
+import App from './App'
+
+createApp(App).mount('#app')
 
 let res = add(10, 20)
 console.log('res', res)
@@ -18,5 +23,3 @@ function foo() {
   console.log('foo Function')
 }
 foo()
-
-let a = 'aaa'

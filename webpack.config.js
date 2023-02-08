@@ -1,6 +1,14 @@
 let path = require('path')
 
+// vue插件
+let { VueLoaderPlugin } = require('vue-loader/dist/index')
+
+let { CleanWebpackPlugin } = require('clean-webpack-plugin') // clean-webpack-plugin
+let HtmlWebpackPlugin = require('html-webpack-plugin') // html-webpack-plugin
+let { DefinePlugin } = require('webpack') // DefinePlugin
+
 module.exports = {
+  mode: 'development',
   // 入口
   entry: './src/main.js',
   output: {
@@ -12,6 +20,22 @@ module.exports = {
 
     // 配置资源模块名称(所有的)
     // assetModuleFilename: "test.png",
+  },
+  resolve: {
+    // 配置别名
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    },
+    /**
+     * 扩展名
+     * 会根据 extensions 中的配置顺序 按顺序解析
+     */
+    extensions: ['.js', '.json', '.vue', '.jsx', '.ts', '.tsx'],
+
+    /**
+     * 文件名
+     */
+    mainFiles: ['index']
   },
   // 配置 loader 规则
   module: {
@@ -64,7 +88,34 @@ module.exports = {
             loader: 'babel-loader'
           }
         ]
+      },
+      {
+        test: /\.vue$/,
+        use: ['vue-loader']
       }
     ]
-  }
+  },
+  plugins: [
+    new VueLoaderPlugin(),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      // html 文件中的 title 名称
+      title: 'Webpack 学习',
+
+      /**
+       * 配置生成的打包文件中的 index.html
+       * 根据此处的index.html模板 生成打包之后的模板
+       */
+      template: './public/index.html'
+    }),
+    new DefinePlugin({
+      /**
+       * 全局变量 其他位置 可以直接使用
+       * 此处的配置 会被当做JS代码执行
+       *  类似与执行 eval('xxxx')
+       * 所以此处要用字符串的话 需要 "'xxxx'"
+       */
+      BASE_URL: "'./'"
+    })
+  ]
 }
