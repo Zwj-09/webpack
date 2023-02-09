@@ -3,6 +3,9 @@
     <h1>标题</h1>
 
     <p>内容</p>
+
+    <button>操作按钮</button>
+    <button>操作按钮</button>
   </div>
 </template>
 

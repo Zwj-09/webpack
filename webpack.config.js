@@ -20,6 +20,9 @@ module.exports = {
 
     // 配置资源模块名称(所有的)
     // assetModuleFilename: "test.png",
+
+    // 每次打包 清理 output 输出文件
+    // clean: true
   },
   resolve: {
     // 配置别名
@@ -36,6 +39,22 @@ module.exports = {
      * 文件名
      */
     mainFiles: ['index']
+  },
+  devServer: {
+    // HMR 模块热替换 默认是 true
+    hot: true,
+
+    // 配置 本地服务的 端口
+    port: 8888,
+
+    // 设置主机地址
+    host: 'localhost',
+
+    // 运行时 自动打开浏览器
+    open: true,
+
+    // 是否对文件进行压缩
+    compress: true
   },
   // 配置 loader 规则
   module: {

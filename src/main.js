@@ -23,3 +23,10 @@ function foo() {
   console.log('foo Function')
 }
 foo()
+
+// 指定模块 进行HMR
+if (module.hot) {
+  module.hot.accept('./utils/add.js', () => {
+    console.log('HMR Happen')
+  })
+}
