@@ -5,10 +5,12 @@ let { VueLoaderPlugin } = require('vue-loader/dist/index')
 
 let { CleanWebpackPlugin } = require('clean-webpack-plugin') // clean-webpack-plugin
 let HtmlWebpackPlugin = require('html-webpack-plugin') // html-webpack-plugin
-let { DefinePlugin } = require('webpack') // DefinePlugin
+let { DefinePlugin, sources } = require('webpack') // DefinePlugin
 
 module.exports = {
   mode: 'development',
+
+  devtool: 'source-map',
   // 入口
   entry: './src/main.js',
   output: {

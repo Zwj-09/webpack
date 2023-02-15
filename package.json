@@ -13,6 +13,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
     "@babel/plugin-transform-arrow-functions": "^7.20.7",
     "@babel/plugin-transform-block-scoping": "^7.20.15",
     "@babel/preset-env": "^7.20.2",
@@ -36,6 +38,8 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "core-js": "^3.28.0",
+    "regenerator-runtime": "^0.13.11",
     "vue": "^3.2.47"
   }
 }
